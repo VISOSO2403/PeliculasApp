@@ -40,6 +40,7 @@ const HomeScreen = () => {
                     renderItem={({ item }: any) => <MoviePoster movie={ item }/> }
                     sliderWidth={ windowsWidth }
                     itemWidth={ 255 }
+                    inactiveSlideOpacity={0.9}
                     />
             </View>
             
@@ -70,7 +71,6 @@ const HomeScreen = () => {
             />
 
             <HorizontalSlider 
-                
                 movies={peliculasEnCine}
             />
             
