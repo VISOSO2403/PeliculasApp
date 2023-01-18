@@ -12,7 +12,7 @@ const { width: windowsWidth } = Dimensions.get('window')
 
 const HomeScreen = () => {
 
-    const { peliculasEnCine, isLoading } = useMovies()
+    const { peliculasEnCine, peliculasPopulares, isLoading } = useMovies()
     // console.log(peliculasEnCine[0]?.title)
     const { top } = useSafeAreaInsets()
 
@@ -43,36 +43,9 @@ const HomeScreen = () => {
                     />
             </View>
             
-            {/* Peliculas Populares */}
-            {/* <View style={{
-                backgroundColor: 'red',
-                height: 260
-            }}>
-                <Text style={{ fontSize: 30, fontWeight: 'bold' }}>En cine</Text>
-                <FlatList 
-                    data={ peliculasEnCine }
-                    renderItem={ ({ item }: any) => (
-                        <MoviePoster 
-                            movie={ item }
-                            width={ 140} 
-                            height={ 200}
-                        />
-                    )}
-                    keyExtractor={ (item) => item.id.toString()}
-                    horizontal={ true }
-                    showsHorizontalScrollIndicator={ false }
-                />
-            </View> */}
-            
-            <HorizontalSlider 
-                title='En cine'
-                movies={peliculasEnCine}
-            />
+            <HorizontalSlider title='Populares' movies={peliculasPopulares} />
 
-            <HorizontalSlider 
-                
-                movies={peliculasEnCine}
-            />
+            
             
         </View>
     </ScrollView>
