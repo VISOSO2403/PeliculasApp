@@ -37,10 +37,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 10,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
+    shadowOpacity: 0.24,
+    shadowRadius: 7,
 
-    elevation: 10,
+    elevation: 9,
   }, 
   image: {
       flex: 1,
