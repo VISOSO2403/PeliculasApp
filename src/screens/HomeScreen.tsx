@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActivityIndicator, Dimensions, FlatList, View, Text, ScrollView } from 'react-native';
+import { ActivityIndicator, Dimensions, View, ScrollView } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 
 import Carousel from 'react-native-snap-carousel';
@@ -12,7 +12,7 @@ const { width: windowsWidth } = Dimensions.get('window')
 
 const HomeScreen = () => {
 
-    const { peliculasEnCine, peliculasPopulares, isLoading } = useMovies()
+    const { nowPlaying, popular, topRated, upcoming, isLoading } = useMovies()
     // console.log(peliculasEnCine[0]?.title)
     const { top } = useSafeAreaInsets()
 
@@ -36,16 +36,16 @@ const HomeScreen = () => {
             {/* Caroser Principal */}
             <View style={{ height: 440 }}>
                 <Carousel 
-                    data={peliculasEnCine}
+                    data={ nowPlaying }
                     renderItem={({ item }: any) => <MoviePoster movie={ item }/> }
                     sliderWidth={ windowsWidth }
                     itemWidth={ 255 }
                     />
             </View>
             
-            <HorizontalSlider title='Populares' movies={peliculasPopulares} />
-
-            
+            <HorizontalSlider title='Populares' movies={ popular } />
+            <HorizontalSlider title='Mejor valorado' movies={ topRated } />            
+            <HorizontalSlider title='Proximamente' movies={ upcoming } />
             
         </View>
     </ScrollView>
