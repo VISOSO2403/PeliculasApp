@@ -3,6 +3,8 @@ import { Text, View } from 'react-native';
 import { MovieFull } from '../interfaces/movieInterface';
 import { Cast } from '../interfaces/creditsInterface';
 
+import Icon from 'react-native-vector-icons/Ionicons'
+
 interface Props {
     movieFull: MovieFull
     cast: Cast[]
@@ -10,9 +12,15 @@ interface Props {
 
 const MovieDetails = ( { movieFull, cast }:Props ) => {
   return (
-    <View>
-        <Text>{movieFull.release_date}</Text>
-    </View>
+    <>
+        <View style={{ marginHorizontal: 20 }}>
+            <Icon 
+                name="star-outline"
+                color="gray"
+                size={ 16 }
+            />
+        </View>
+    </>
   )
 }
 
