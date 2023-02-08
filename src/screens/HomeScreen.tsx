@@ -1,8 +1,9 @@
 import React from 'react'
 import { ActivityIndicator, Dimensions, View, ScrollView } from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import Carousel from 'react-native-snap-carousel';
+import GradientBackground from '../components/GradientBackground';
 import HorizontalSlider from '../components/HorizontalSlider';
 
 import MoviePoster from '../components/MoviePoster';
@@ -28,29 +29,30 @@ const HomeScreen = () => {
         )
     }
 
-  return (
+    return (
+        <GradientBackground>
+            <ScrollView>
+                <View style={{ marginTop: top + 20 }}>
 
-    <ScrollView>
-        <View style={{ marginTop: top + 20}}>
+                    {/* Caroser Principal */}
+                    <View style={{ height: 440 }}>
+                        <Carousel
+                            data={nowPlaying}
+                            renderItem={({ item }: any) => <MoviePoster movie={item} />}
+                            sliderWidth={windowsWidth}
+                            itemWidth={255}
+                            inactiveSlideOpacity={0.9}
+                        />
+                    </View>
 
-            {/* Caroser Principal */}
-            <View style={{ height: 440 }}>
-                <Carousel 
-                    data={ nowPlaying }
-                    renderItem={({ item }: any) => <MoviePoster movie={ item }/> }
-                    sliderWidth={ windowsWidth }
-                    itemWidth={ 255 }
-                    inactiveSlideOpacity={0.9}
-                    />
-            </View>
-            
-            <HorizontalSlider title='Populares' movies={ popular } />
-            <HorizontalSlider title='Mejor valorado' movies={ topRated } />            
-            <HorizontalSlider title='Proximamente' movies={ upcoming } />
-            
-        </View>
-    </ScrollView>
-  )
+                    <HorizontalSlider title='Populares' movies={popular} />
+                    <HorizontalSlider title='Mejor valorado' movies={topRated} />
+                    <HorizontalSlider title='Proximamente' movies={upcoming} />
+
+                </View>
+            </ScrollView>
+        </GradientBackground>
+    )
 }
 
 export default HomeScreen
