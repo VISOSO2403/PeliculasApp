@@ -11,6 +11,7 @@ import MoviePoster from '../components/MoviePoster';
 import useMovies from '../hooks/useMovies';
 import { getImageColors } from '../helpers/getColors';
 import { GradientContext } from '../context/GradientContext';
+import { useEffect } from 'react';
 
 const { width: windowsWidth } = Dimensions.get('window')
 
@@ -29,6 +30,12 @@ const HomeScreen = () => {
 
         setMainColors({ primary, secondary })
     }
+
+    useEffect(() => {
+        if ( nowPlaying.length > 0) {
+            getPosterColors(0)
+        }
+    }, [ nowPlaying ])
 
     if (isLoading) {
         return (
